@@ -26,21 +26,19 @@ hostedZone=$( aws route53 list-hosted-zones-by-name \
 hostedZone=$(basename ${hostedZone//\"})
 
 
-aws route53 change-resource-record-sets --hosted-zone-id ${hostedZone} --change-batch "$( cat << EOF 
-{
-    "Changes": [
+aws route53 change-resource-record-sets --hosted-zone-id ${hostedZone} --change-batch \
+"{
+    \"Changes\": [
         {
-            "Action" : "UPSERT",
-            "ResourceRecordSet": {
-                "Name": "${host_name}.${domain_name}",
-                "Type": "A",
-                "TTL": 60,
-                "ResourceRecords": [
-                    {"Value": "${ip}"}
+            \"Action\" : \"UPSERT\",
+            \"ResourceRecordSet\": {
+                \"Name\": \"${host_name}.${domain_name}\",
+                \"Type\": \"A\",
+                \"TTL\": 60,
+                \"ResourceRecords\": [
+                    {\"Value\": \"${ip}\"}
                 ]
             }
         }
     ]
-}
-EOF
-)"
+}"
