@@ -9,4 +9,8 @@ host_name the_host
 
 The DNS record will be update so that `the_host.your-domain-name.com` point to the public IP of the instance.
 
-To execute the script everytime the instance boot, place a copy or a symlink into `/var/lib/cloud/scripts/per-boot/`.
+To execute the script everytime the instance boot, place a copy or a symlink into `/var/lib/cloud/scripts/per-boot/`. This will need `sudo` privileges and can be done like this:
+
+```
+sudo ln -fs  ${PWD}/updateRoute53.sh /var/lib/cloud/scripts/per-boot/
+```
