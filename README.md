@@ -1,6 +1,6 @@
 # Automate Route53 DNS upon EC2 start
 
-This script automatically update Route53 record with the instance IP. You need to create 2 tags
+This script automatically update Route53 record with the instance IP. You need to create 2 tags on your EC2 instance
 
 ```
 domain_name your-domain-name.com
